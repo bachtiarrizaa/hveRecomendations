@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base target="_top" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heavy Equipment Department</title>
+
+    <!-- AdminLTE CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.css"
+    />
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css"
+    />
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Data Table -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css"
+    />
+
+    <style>
+      .btn-choice {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-left: 0.5rem;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .btn-choice a {
+        background-color: white;
+        color: black;
+        border-bottom: 4px solid #e1e1e1;
+        padding: 0.5rem;
+      }
+
+      th {
+        background-color: #3d9970;
+        color: white;
+      }
+
+      .card-title span {
+        font-size: 1.5rem;
+      }
+
+      .card-body table {
+        text-align: center;
+      }
+
+      .modal-body a {
+        color: black;
+      }
+
+      .modal-body a:hover {
+        text-decoration: underline;
+      }
+
+      form h3 {
+        color: white;
+        font-size: 40px;
+        font-weight: 600;
+        width: 30%;
+        text-align: center;
+      }
+
+      form h4 {
+        font-weight: bold;
+        font-size: 20px;
+        width: 30%;
+      }
+
+      .project-title {
+        display: flex;
+        padding: 0.6rem 1.3rem;
+        background-color: #3d9970;
+        margin: 1rem 0.5rem 0 0.5rem;
+        border-radius: 15px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .project-title input {
+        width: 70%;
+        height: 3rem;
+      }
+
+      .suggested-action,
+      .submission-number,
+      .submission-name,
+      .division-department,
+      .location,
+      .background,
+      .improvement-benefit,
+      .current-process {
+        display: flex;
+        padding: 1rem 1.3rem 0.5rem 1.3rem;
+      }
+
+      .suggested-action input {
+        width: 68%;
+        height: 4rem;
+        margin-left: 0.5rem;
+      }
+
+      .meassure-of-success,
+      .member {
+        padding: 1rem 1.3rem 0.5rem 1.3rem;
+      }
+
+      .box {
+        box-shadow: 10px 10px 20px rgba(172, 172, 172, 0.25);
+        padding: 1rem;
+        background-color: white;
+        border-radius: 10px;
+      }
+
+      .submission-number input,
+      .submission-name input,
+      .division-department input,
+      .location input {
+        width: 70%;
+        text-align: center;
+      }
+
+      .background textarea,
+      .improvement-benefit textarea,
+      .current-process textarea {
+        width: 70%;
+        height: 8rem;
+      }
+    </style>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  </head>
+
+  <body class="sidebar-mini layout-navbar-fixed layout-fixed">
+    <!-- ./wrapper -->
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav
+        class="main-header navbar navbar-expand navbar-white navbar-light"
+        style="background-color: #3d9970; align-items: center"
+      >
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#">
+              <i class="fas fa-bars" style="color: white"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link"
+              data-toggle="dropdown"
+              href="#"
+              style="color: white; margin-right: 1rem"
+            >
+              <i class="fas fa-user-circle" style="margin-right: 8px"></i>
+              <span class="d-none d-md-inline">User</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <a href="#" class="dropdown-item">
+                <!-- User image and details -->
+                <div class="media">
+                  <i
+                    class="fas fa-user-circle fa-3x"
+                    style="margin-right: 10px"
+                  ></i>
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">User</h3>
+                    <p class="text-sm">Karyawan</p>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a
+                href="#"
+                class="dropdown-item"
+                data-toggle="modal"
+                data-target="#accountModal"
+                >Change Account</a
+              >
+              <a href="#" class="dropdown-item dropdown-footer">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-light-primary elevation-4">
+        <!-- Brand Logo -->
+        <a
+          href="#"
+          class="brand-link"
+          style="background-color: #3d9970; color: white"
+        >
+          <img
+            src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
+            alt="logo-spil"
+            class="brand-image img-circle"
+            style="padding-left: 0; margin-left: 10px"
+          />
+          <span class="font-weight-bold" style="margin-left: 16px; color: white"
+            >SPIL</span
+          >Organiser
+        </a>
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar Menu -->
+          <nav class="mt-4">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon"
+                    ><img
+                      src="https://www.spil.co.id/img/spil_logo.581f4306.svg"
+                      alt="logo-spil"
+                      style="width: 34px"
+                  /></i>
+                  <p
+                    class="font-weight-bold"
+                    style="font-size: 10pt; padding-left: 16px"
+                  >
+                    Connecting Islands
+                  </p>
+                </a>
+              </li>
+            </ul>
+            <div class="form-inline mt-4">
+              <div class="input-group mb-2" data-widget="sidebar-search">
+                <input
+                  class="form-control form-control-sidebar"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-sidebar">
+                    <i class="fas fa-search fa-fw"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="true"
+            >
+              <!-- Add more sidebar menu items here -->
+              <? var url = getScriptUrl(); ?>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i
+                    class="fa-solid fa-circle-user"
+                    style="font-size: 20px; margin-right: 0.5rem"
+                  ></i>
+                  <p>Heavy Equipment</p>
+                </a>
+              </li>
+              <li class="nav-item" style="margin-top: 7rem">
+                <a href="/ped.html" class="nav-link">
+                  <i
+                    class="fa-solid fa-right-to-bracket"
+                    style="font-size: 20px; margin-right: 0.5rem"
+                  ></i>
+                  <p>Go to HRMS</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content" style="padding: 4vh">
+          <!-- container fluid -->
+          <div class="container-fluid">
+            <!-- Your content goes here -->
+            <h3 class="font-weight-bold">Heavy Equipment</h3>
+            <h4 class="font-weight-light">Unlocking Excellent!</h4>
+            <form action="" class="submit-form" id="projectForm">
+              <div class="project-title">
+                <h3 style="font-size: 24px">Search Recommendations</h3>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="projectTitle"
+                    name="project_title"
+                    placeholder="Input Problem"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-light"
+                      type="button"
+                      onclick="submitForm()"
+                    >
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="suggested-action">
+                <textarea
+                  type="text"
+                  id="recommendationList"
+                  name="recommendationList"
+                  placeholder="Recommendations Result"
+                  style="width: 100%; height: 180px"
+                ></textarea>
+                <div id="recommendationList"></div>
+              </div>
+            </form>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <strong class="float-right d-none d-sm-inline"> v1.0.0 </strong>
+        <!-- Default to the left -->
+        <strong style="color: black">
+          <a href="https://spil.co.id/" style="color: blue">2024 SPIL</a>.
+          Crafted by HRIS & HRIS Army
+        </strong>
+      </footer>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+
+  <script>
+    function adjustTextArea(textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
+  </script>
+
+  <script>
+    async function submitForm() {
+      const projectTitle = document.getElementById("projectTitle").value;
+      const response = await fetch("/recommend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          project_title: projectTitle,
+        }),
+      });
+      const data = await response.json();
+      const recommendationList = document.getElementById("recommendationList");
+      recommendationList.value = data.recommendations.join("\n");
+    }
+  </script>
+</html>
