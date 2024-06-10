@@ -9,7 +9,7 @@
    cd hveRecomendations
    ```
 
-   atau bisa langsung download melalui link [berikut](https://github.com/bachtiarrizaa/KnowledgeManagement/archive/refs/heads/main.zip).
+   atau bisa langsung download melalui link [berikut](https://github.com/bachtiarrizaa/hveRecomendations/archive/refs/heads/main.zip).
 
 2. **Unzip file dan Buka melalui Visual Studio Code**
    ```
